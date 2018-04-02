@@ -146,7 +146,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/28/es6-学习笔记/">es6 学习笔记</a>
+      <a class="article-title" href="/2018/03/28/es6-学习笔记/">es6 学习笔记之 Promise</a>
     </h1>
   
 
@@ -159,7 +159,31 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><ul>
+<li>当Promise实例状态变为resolved，就会出发then方法绑定的回调函数</li>
+<li><p>Promise新建后就会立即执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">new Promise(function() &#123;</span><br><span class="line">  console.log(123); // 立即执行 无需等待状态改变</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Promise中的then，catch等都为回调函数，会在当前脚本所有同步任务执行完后才执行</p>
+</li>
+<li>调用resolve或reject并不会中介Promise的参数函数的执行</li>
+<li>Promise的then方法是定义在原型Promise.prototype上的</li>
+<li>Promise.all() 将多个Promise实例包装成一个新的Promise实例。接受一个数组作为参数<ul>
+<li><code>const p = Promise([p1, p2, p3]); // p1, p2, p3都是实例</code></li>
+<li>p1, p2, p3都变成fulfilled则p变为fulfilled，p1, p2, p3又要给变成rejected则p变成rejected</li>
+<li>用途：用于同一个数据在不同数据库中寻找 都存在对应数据则触发该promise，否则提示错误</li>
+</ul>
+</li>
+<li><p>应用：</p>
+<ul>
+<li>加载图片 图片加载完成Promise状态发生改变<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const preloadImage = path =&gt; &#123;</span><br><span class="line">  return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    cosnt image = new Image();</span><br><span class="line">    image.onload = resolve; // 异步</span><br><span class="line">    image.error = reject; // 异步</span><br><span class="line">    image.src = path;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Promise.try为所有操作提供一个统一的处理机制，若想用then方法管理流程，则都用try包装一下，当Promise抛出异步错误时 可以使用catch来捕获，但是抛出同步错误的时候，就要用try catch 来捕获了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 基本的方法： 缺点是略显笨拙</span><br><span class="line">try &#123;</span><br><span class="line">  database.users.get(&#123;id: userId&#125;).then(...).catch(...);</span><br><span class="line">&#125; catch &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line">// 推荐的方法</span><br><span class="line">Promise.try(database.users.get(&#123;id: userId&#125;)).then(...).catch(...);</span><br></pre></td></tr></table></figure></li>
+</ul>
+
       
 
       
