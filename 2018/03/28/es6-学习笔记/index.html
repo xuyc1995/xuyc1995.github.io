@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>es6 学习笔记之 Promise | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Promise 当Promise实例状态变为resolved，就会出发then方法绑定的回调函数 Promise新建后就会立即执行 123new Promise(function() &amp;#123;  console.log(123); // 立即执行 无需等待状态改变&amp;#125;)  Promise中的then，catch等都为回调函数，会在当前脚本所有同步任务执行完后才执行  调用resolve">
+  <meta name="description" content="Promise 当Promise实例状态变为resolved，就会出发then方法绑定的回调函数">
 <meta name="keywords" content="javascript,es6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="es6 学习笔记之 Promise">
 <meta property="og:url" content="http://yoursite.com/2018/03/28/es6-学习笔记/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Promise 当Promise实例状态变为resolved，就会出发then方法绑定的回调函数 Promise新建后就会立即执行 123new Promise(function() &amp;#123;  console.log(123); // 立即执行 无需等待状态改变&amp;#125;)  Promise中的then，catch等都为回调函数，会在当前脚本所有同步任务执行完后才执行  调用resolve">
-<meta property="og:updated_time" content="2018-04-02T06:04:30.644Z">
+<meta property="og:description" content="Promise 当Promise实例状态变为resolved，就会出发then方法绑定的回调函数">
+<meta property="og:updated_time" content="2018-04-03T07:48:30.208Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6 学习笔记之 Promise">
-<meta name="twitter:description" content="Promise 当Promise实例状态变为resolved，就会出发then方法绑定的回调函数 Promise新建后就会立即执行 123new Promise(function() &amp;#123;  console.log(123); // 立即执行 无需等待状态改变&amp;#125;)  Promise中的then，catch等都为回调函数，会在当前脚本所有同步任务执行完后才执行  调用resolve">
+<meta name="twitter:description" content="Promise 当Promise实例状态变为resolved，就会出发then方法绑定的回调函数">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -163,7 +163,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><ul>
-<li>当Promise实例状态变为resolved，就会出发then方法绑定的回调函数</li>
+<li>当Promise实例状态变为resolved，就会出发then方法绑定的回调函数<a id="more"></a></li>
 <li><p>Promise新建后就会立即执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">new Promise(function() &#123;</span><br><span class="line">  console.log(123); // 立即执行 无需等待状态改变</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 </li>

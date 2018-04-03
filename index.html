@@ -160,34 +160,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="async函数"><a href="#async函数" class="headerlink" title="async函数"></a>async函数</h3><ul>
-<li>简单来说就是将generator中的yield替换成await 将*星号替换成async</li>
-<li>async针对generator的改进<ul>
-<li>async自带执行器，不需要像generator一样使用next方法或者co模块</li>
-<li>更加好理解；async表示函数里有异步操作，await表示紧跟在后面的表达式需要等待结果后继续往下执行</li>
-<li>async函数的await后面可以是Promise对象和原始类型的值</li>
-<li>async返回的是Promise对象，可以直接用then方法指定下一步的操作</li>
-</ul>
-</li>
-<li>当async函数执行时，一旦遇到await就会先返回，等到异步操作完成，再往后执行</li>
-<li>async函数返回的Promise对象，必须等到内部所有异步操作执行完毕，才能执行then的回调函数</li>
-<li>await后面的Promise对象若变为reject，则reject的参数会被catch方法的回调函数接收到</li>
-<li><p>只要一个await语句后面的Promise变为reject,则真个async都会中断执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">async function f() &#123;</span><br><span class="line">  await Promise.reject(&apos;wrong&apos;);</span><br><span class="line">  await Promise.resolve(&apos;hello world&apos;);// 将不被执行</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>解决办法：将await都分别放在try{}catch{}中，则都会执行</p>
-</li>
-<li><p>使用</p>
-<ul>
-<li>两个独立的异步操作，互不依赖，可以通过写成同时触发，这样可以缩短程序的执行时间, 那个征信后台的图表部分图表部分可以用这个方法来重新写，缩短时间<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let [foo, bar] = await Promise.all([getFoo(), getBar()]);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>实现原理</p>
-<ul>
-<li>将generator函数和自动执行器(spawn函数=&gt;自动执行器)，封装在一个函数里;</li>
-</ul>
-</li>
-</ul>
-
+<li>简单来说就是将generator中的yield替换成await 将*星号替换成async
+        
+          <a class="article-more-a" href="/2018/04/03/es6学习笔记3-之async/#more">more >></a>
+        
       
 
       
@@ -265,31 +241,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h3><ul>
-<li>一个状态机，封装了很多个内部状态</li>
-<li><p>两个特征 <code>1.function关键字与函数名中有个*星号；2.函数体内部使用yield表达式</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function * helloworld() &#123;</span><br><span class="line">  yield &apos;hello&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>generator函数和普通函数的区别</p>
-<ul>
-<li>调用generator函数后不执行</li>
-<li>返回的也不是函数运行结果，而是一个只想内部状态的指针对象</li>
-</ul>
-</li>
-<li>yield表达式<ul>
-<li>遇到yield表达式，则暂停执行后面的操作，并将紧跟在yield候面的表达式的值座位返回的对象的value属性值</li>
-<li>下次调用next方法，运行直到yield表达式</li>
-<li>若不再遇到yield则运行到函数结束，将return鱼局后面的表达式的值座位返回对象的value属性值</li>
-<li>若不存在return语句，则返回对象的value值为undefined</li>
-</ul>
-</li>
-<li>next方法的参数<ul>
-<li>yield本身没有返回值，或者说总是返回undefined；当next方法带参数的时候，该参数则被当作上一个yield表达式的返回值</li>
-<li>通过next方法的参数，则可以在generator函数开始运行时，向函数体内部注入值；</li>
-</ul>
-</li>
-<li>for…of…可以自动遍历Generator函数时生成的Iterator对象，且不需要再调用next方法；return后面的鱼局不包括在其中</li>
-</ul>
-<h3 id="前半部分大概是这样，并没有全部看完"><a href="#前半部分大概是这样，并没有全部看完" class="headerlink" title="前半部分大概是这样，并没有全部看完"></a>前半部分大概是这样，并没有全部看完</h3>
+<li>一个状态机，封装了很多个内部状态
+        
+          <a class="article-more-a" href="/2018/03/28/es6学习笔记2/#more">more >></a>
+        
       
 
       
@@ -367,30 +322,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><ul>
-<li>当Promise实例状态变为resolved，就会出发then方法绑定的回调函数</li>
-<li><p>Promise新建后就会立即执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">new Promise(function() &#123;</span><br><span class="line">  console.log(123); // 立即执行 无需等待状态改变</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Promise中的then，catch等都为回调函数，会在当前脚本所有同步任务执行完后才执行</p>
-</li>
-<li>调用resolve或reject并不会中介Promise的参数函数的执行</li>
-<li>Promise的then方法是定义在原型Promise.prototype上的</li>
-<li>Promise.all() 将多个Promise实例包装成一个新的Promise实例。接受一个数组作为参数<ul>
-<li><code>const p = Promise([p1, p2, p3]); // p1, p2, p3都是实例</code></li>
-<li>p1, p2, p3都变成fulfilled则p变为fulfilled，p1, p2, p3又要给变成rejected则p变成rejected</li>
-<li>用途：用于同一个数据在不同数据库中寻找 都存在对应数据则触发该promise，否则提示错误</li>
-</ul>
-</li>
-<li><p>应用：</p>
-<ul>
-<li>加载图片 图片加载完成Promise状态发生改变<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const preloadImage = path =&gt; &#123;</span><br><span class="line">  return new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">    cosnt image = new Image();</span><br><span class="line">    image.onload = resolve; // 异步</span><br><span class="line">    image.error = reject; // 异步</span><br><span class="line">    image.src = path;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>Promise.try为所有操作提供一个统一的处理机制，若想用then方法管理流程，则都用try包装一下，当Promise抛出异步错误时 可以使用catch来捕获，但是抛出同步错误的时候，就要用try catch 来捕获了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 基本的方法： 缺点是略显笨拙</span><br><span class="line">try &#123;</span><br><span class="line">  database.users.get(&#123;id: userId&#125;).then(...).catch(...);</span><br><span class="line">&#125; catch &#123;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br><span class="line">// 推荐的方法</span><br><span class="line">Promise.try(database.users.get(&#123;id: userId&#125;)).then(...).catch(...);</span><br></pre></td></tr></table></figure></li>
-</ul>
-
+<li>当Promise实例状态变为resolved，就会出发then方法绑定的回调函数
+        
+          <a class="article-more-a" href="/2018/03/28/es6-学习笔记/#more">more >></a>
+        
       
 
       
