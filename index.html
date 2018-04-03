@@ -240,6 +240,108 @@
 
 
   
+    <article id="post-es6学习笔记2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/28/es6学习笔记2/">es6 学习笔记之 Generator</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/28/es6学习笔记2/" class="archive-article-date">
+  	<time datetime="2018-03-28T09:11:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h3><ul>
+<li>一个状态机，封装了很多个内部状态</li>
+<li><p>两个特征 <code>1.function关键字与函数名中有个*星号；2.函数体内部使用yield表达式</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function * helloworld() &#123;</span><br><span class="line">  yield &apos;hello&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>generator函数和普通函数的区别</p>
+<ul>
+<li>调用generator函数后不执行</li>
+<li>返回的也不是函数运行结果，而是一个只想内部状态的指针对象</li>
+</ul>
+</li>
+<li>yield表达式<ul>
+<li>遇到yield表达式，则暂停执行后面的操作，并将紧跟在yield候面的表达式的值座位返回的对象的value属性值</li>
+<li>下次调用next方法，运行直到yield表达式</li>
+<li>若不再遇到yield则运行到函数结束，将return鱼局后面的表达式的值座位返回对象的value属性值</li>
+<li>若不存在return语句，则返回对象的value值为undefined</li>
+</ul>
+</li>
+<li>next方法的参数<ul>
+<li>yield本身没有返回值，或者说总是返回undefined；当next方法带参数的时候，该参数则被当作上一个yield表达式的返回值</li>
+<li>通过next方法的参数，则可以在generator函数开始运行时，向函数体内部注入值；</li>
+</ul>
+</li>
+<li>for…of…可以自动遍历Generator函数时生成的Iterator对象，且不需要再调用next方法；return后面的鱼局不包括在其中</li>
+</ul>
+<h3 id="前半部分大概是这样，并没有全部看完"><a href="#前半部分大概是这样，并没有全部看完" class="headerlink" title="前半部分大概是这样，并没有全部看完"></a>前半部分大概是这样，并没有全部看完</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">es6</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/28/es6学习笔记2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-es6中的Map使用场景1-0" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
