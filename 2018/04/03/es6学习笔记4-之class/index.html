@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>es6中的Map使用场景1.0 | Hexo</title>
+  <title>es6学习笔记4 之class | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言 一开始看es6的时候其实对于Map和Set这个两个数据结构并没有很清晰 尤其是Map,也很容易混淆数组的map()遍历及Map数据结构">
+  <meta name="description" content="classfirst 其实理解class 对于我来说是可以理解的，因为自己以前学过c和c++对于构造函数等都有所了解">
 <meta name="keywords" content="javascript,es6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="es6中的Map使用场景1.0">
-<meta property="og:url" content="http://yoursite.com/2018/03/28/es6中的Map使用场景1-0/index.html">
+<meta property="og:title" content="es6学习笔记4 之class">
+<meta property="og:url" content="http://yoursite.com/2018/04/03/es6学习笔记4-之class/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="前言 一开始看es6的时候其实对于Map和Set这个两个数据结构并没有很清晰 尤其是Map,也很容易混淆数组的map()遍历及Map数据结构">
-<meta property="og:updated_time" content="2018-04-03T07:50:18.307Z">
+<meta property="og:description" content="classfirst 其实理解class 对于我来说是可以理解的，因为自己以前学过c和c++对于构造函数等都有所了解">
+<meta property="og:updated_time" content="2018-04-08T02:44:12.923Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="es6中的Map使用场景1.0">
-<meta name="twitter:description" content="前言 一开始看es6的时候其实对于Map和Set这个两个数据结构并没有很清晰 尤其是Map,也很容易混淆数组的map()遍历及Map数据结构">
+<meta name="twitter:title" content="es6学习笔记4 之class">
+<meta name="twitter:description" content="classfirst 其实理解class 对于我来说是可以理解的，因为自己以前学过c和c++对于构造函数等都有所了解">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -142,45 +142,90 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-es6中的Map使用场景1-0" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-es6学习笔记4-之class" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      es6中的Map使用场景1.0
+      es6学习笔记4 之class
     </h1>
   
 
         
-        <a href="/2018/03/28/es6中的Map使用场景1-0/" class="archive-article-date">
-  	<time datetime="2018-03-28T08:00:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-28</time>
+        <a href="/2018/04/03/es6学习笔记4-之class/" class="archive-article-date">
+  	<time datetime="2018-04-03T08:20:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
-<li>一开始看es6的时候其实对于Map和Set这个两个数据结构并没有很清晰</li>
-<li>尤其是Map,也很容易混淆数组的map()遍历及Map数据结构<a id="more"></a>
-<h2 id="契机"><a href="#契机" class="headerlink" title="契机"></a>契机</h2></li>
-<li>某次后端传给我的接口某个字段是传了一个状态值，拿state来举例：state 有9中情况 0-9 分别对应9种形态</li>
-<li><p>以前处理这个情况大部分写if 写了无数个if</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if (state === 0) &#123;</span><br><span class="line">  XXXX</span><br><span class="line">&#125; else if () &#123;</span><br><span class="line">  XXX</span><br><span class="line">&#125; else &#123;</span><br><span class="line"></span><br><span class="line">&#125; // 9个状态相当于要写一个if 7个else if 一个else</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>后来我觉得自己不能再写if了 代码看起来很不好看 虽然功能是可以实现的 然后我get了switch case</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">switch (state) &#123;</span><br><span class="line">  case 0:</span><br><span class="line">    XX</span><br><span class="line">    break;</span><br><span class="line">  ···</span><br><span class="line">  default: </span><br><span class="line">    break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>后来可能是醍醐灌顶，突然意识到说Map可不可以这么用，后来试了几次就封装了一下一个东西</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function stateMap() &#123;</span><br><span class="line">  const map = new Map(); // 这是一个Map结构</span><br><span class="line">  map.set(0, &apos;成功&apos;)</span><br><span class="line">    .set(1, &apos;失败&apos;)</span><br><span class="line">    .set(2, &apos;进行中&apos;);// set设置键值对</span><br><span class="line">  return map;</span><br><span class="line">&#125;</span><br><span class="line">// 调用stateMap()会得到一个Map的数据结构如下 拿第一个所述</span><br><span class="line">&#123;</span><br><span class="line">  key: 0,</span><br><span class="line">  value: &apos;成功&apos;, //相当于0 =&gt; &apos;成功&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用上述封装的函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stateMap().get(key);// 传入对应的值即可获得对应的值</span><br></pre></td></tr></table></figure>
+        <h2 id="class"><a href="#class" class="headerlink" title="class"></a>class</h2><h3 id="first"><a href="#first" class="headerlink" title="first"></a>first</h3><ul>
+<li>其实理解class 对于我来说是可以理解的，因为自己以前学过c和c++对于构造函数等都有所了解<a id="more"></a>
+<h3 id="notes"><a href="#notes" class="headerlink" title="notes"></a>notes</h3><ul>
+<li>es6的类(class)的数据类型就是函数，类本身就指向构造函数</li>
+<li>constructor方法</li>
+<li>constructor方法是类的默认方法，通过new生成对象实例时，自动调用该方法，一个类中必须有constructor方法；</li>
+<li>默认返回实例对象即(this), 也可以指定返回另外一个对象</li>
+<li>类必须使用new调用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Point &#123;&#125;</span><br><span class="line">const point = new Point(); // good</span><br><span class="line">cosnt point = Point(); // wrong 报错</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="下次再想到其他应用场景会进行添加的呀"><a href="#下次再想到其他应用场景会进行添加的呀" class="headerlink" title="下次再想到其他应用场景会进行添加的呀"></a>下次再想到其他应用场景会进行添加的呀</h2>
+</li>
+</ul>
+<ul>
+<li><p>类的所有实例共享一个原型对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const p1 = new Point(2, 3);</span><br><span class="line">const p2 = new Point(3,2);</span><br><span class="line">p1.__proto__ === p2.__proto__; // true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>类不存在变量提升，类必须定义在签，使用在后，否则会报错；</p>
+</li>
+<li><p>类的私有方法</p>
+<ul>
+<li>方法一：在方法前加下划线<code>_var() {}</code>这则代表私有方法；但在类的外部依旧可以调用到</li>
+<li><p>方法二：将私有方法移除模块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Widget &#123;</span><br><span class="line">  foo(baz) &#123;</span><br><span class="line">    bar.call(this, baz);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">function bar(baz) &#123;</span><br><span class="line">  return this.snaf = baz;</span><br><span class="line">&#125; // 此方法为类私有</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法三：里用个Symbol值的唯一性，将私有方法的名字命名为一个Symbol值</p>
+</li>
+</ul>
+</li>
+<li>类内部如果有this，则this指向类的实例。<ul>
+<li>避免找不到this.方法中的方法<ul>
+<li>在狗仔函数中绑定this，<code>this.printName = this.printName.bind(this)</code></li>
+<li>箭头函数</li>
+<li>proxy，获取方法时，自动绑定this</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>name属性总是返回紧跟在class关键字后面的类名</li>
+<li><p>在一个方法前加上static关键字，表示该方法不会被实例继承，而是直接通过类来调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Foo &#123;</span><br><span class="line">  static classMethod() &#123;</span><br><span class="line">    return &apos;hello&apos;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">Foo.classMethod(); //hello ---- success</span><br><span class="line">const foo = new Foo();</span><br><span class="line">foo.classMethod(); //wrong ---- fail</span><br></pre></td></tr></table></figure>
+<p>同样静态方法中的this指向的是类，而不是实例对象</p>
+</li>
+<li><p>class可以通过extends关键字实现继承，比修改原型链实现继承要方便的多</p>
+<ul>
+<li>super关键字：表示弗雷的构造函数，用来新建父类的this对象。</li>
+<li><p>子类必须在constructor方法中调用super方法，否则新建实例时就报错；原因是子类是没有自己的this对象的，而是继承父类的this对象对其进行加工；若不调用super则得不到this对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Point() &#123;</span><br><span class="line">  constructor(x, y) &#123;</span><br><span class="line">    this.x = x;</span><br><span class="line">    this.y = y;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">class ColorPoint extends Point() &#123;</span><br><span class="line">  constructor(x, y, color) &#123;</span><br><span class="line">    this.color = color; // error---未调用super没有this对象</span><br><span class="line">    super(x, y);</span><br><span class="line">    this.color = color; // 正确</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>父类的静态方法，也会被子类继承</p>
+</li>
+</ul>
+</li>
+<li><p>super关键字</p>
+<ul>
+<li>super关键字既可以当作对象使用，也可以当作函数使用</li>
+<li>当作函数使用时代表父类的构造函数（子类的构造函数必须执行一次super函数），只能使用在子类的构造函数中，否则报错</li>
+<li><p>当作对象时，在普通方法中只想父类的原型对象；静态方法中指向父类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class A &#123;</span><br><span class="line">  p() &#123;</span><br><span class="line">    return 2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">class B extends A &#123;</span><br><span class="line">  constructor() &#123;</span><br><span class="line">    super();</span><br><span class="line">    console.log(super.p()); // 2</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">let b = new B();</span><br></pre></td></tr></table></figure>
+<p>上述代码中则是将super当作一个对象，super指向父类的原型对象，若p是父类A的实例属性，则引用不到</p>
+</li>
+</ul>
+</li>
+</ul>
+
       
 
       
@@ -216,15 +261,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/03/28/es6学习笔记2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          es6 学习笔记之 Generator
-        
-      </div>
-    </a>
   
+    <a href="/2018/04/03/es6学习笔记3-之async/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">es6学习笔记3 之async</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -249,7 +290,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#契机"><span class="toc-number">2.</span> <span class="toc-text">契机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下次再想到其他应用场景会进行添加的呀"><span class="toc-number">3.</span> <span class="toc-text">下次再想到其他应用场景会进行添加的呀</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#class"><span class="toc-number">1.</span> <span class="toc-text">class</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#first"><span class="toc-number">1.1.</span> <span class="toc-text">first</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#notes"><span class="toc-number">1.2.</span> <span class="toc-text">notes</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
