@@ -162,15 +162,10 @@
         <h2 id="Vue-使用插槽分发内容"><a href="#Vue-使用插槽分发内容" class="headerlink" title="Vue 使用插槽分发内容"></a>Vue 使用插槽分发内容</h2><h3 id="应用场景1-0"><a href="#应用场景1-0" class="headerlink" title="应用场景1.0"></a>应用场景1.0</h3><ul>
 <li>之前看vue的时候并没有过多的使用到vue的插槽分发的部分，也没有过多的了解这部分知识</li>
 <li>后来移动端的title那一栏的时候发现了slot的用处</li>
-<li>slot使用name这一个特殊的特性来进一步配置如何分发内容，插槽可以有多个不同的名字<code>&lt;slot name = &#39;header&#39;&gt;&lt;/slot&gt;</code><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3></li>
-<li><p>一般title栏分为三部分 左边中间右边</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 子组件 child.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;slot name=&apos;left&apos;&gt;后退&lt;/slot&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;title&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;slot name=&apos;right&apos;&gt;分享&lt;/slot&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">// 父组件</span><br><span class="line">a.场景一</span><br><span class="line">  &lt;child&gt;&lt;/child&gt; // title栏从左到右为 后退 title 分享</span><br><span class="line">b.场景二</span><br><span class="line">  &lt;child&gt;</span><br><span class="line">    &lt;p slot = &apos;left&apos;&gt;back&lt;/p&gt;</span><br><span class="line">  &lt;/child&gt; // title栏从左到右为 back title 分享</span><br><span class="line">c.场景三</span><br><span class="line">  &lt;child&gt;</span><br><span class="line">    &lt;p slot = &apos;left&apos;&gt;&lt;/p&gt;</span><br><span class="line">  &lt;/child&gt; // title栏从左到右为 空值 title 分享</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>子组件中slot内的值为默认值，若为空 则默认为空；</p>
-</li>
-<li>基本上取决于设计稿上title栏的大多数形态来决定默认值为什么<h3 id="基本上利用插槽可以动态改变组件-也是一个很好的拓展了"><a href="#基本上利用插槽可以动态改变组件-也是一个很好的拓展了" class="headerlink" title="基本上利用插槽可以动态改变组件 也是一个很好的拓展了"></a>基本上利用插槽可以动态改变组件 也是一个很好的拓展了</h3></li>
-</ul>
-
+<li>slot使用name这一个特殊的特性来进一步配置如何分发内容，插槽可以有多个不同的名字<code>&lt;slot name = &#39;header&#39;&gt;&lt;/slot&gt;</code>
+        
+          <a class="article-more-a" href="/2018/04/10/vue-slot-应用场景/#more">more >></a>
+        
       
 
       
@@ -325,53 +320,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="module体系"><a href="#module体系" class="headerlink" title="module体系"></a>module体系</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
-<li>es6在module上的设计思想是近亮的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量；</li>
-<li><code>import { stat, exists, readFile } from &#39;fs&#39;</code>该方法实质是从fs模块加载3个方法，其他方法不加载，该方法成为“编译时加载”或者“静态加载”，效率更高</li>
-<li>es6模块自动采用严格模式；<ul>
-<li>变量必须声明后使用</li>
-<li>函数的参数不能同名</li>
-<li>不能使用with语句</li>
-<li>不能对只读属性赋值</li>
-<li>不能使用前缀0表示八进制数</li>
-<li>不能删除不可删除的属性</li>
-<li>不能删除变量delete prop</li>
-<li>eval不会再它的外层作用于引入变量</li>
-<li>eval和arguments不能被重新赋值</li>
-<li>arguments不会自动反映函数参数的变化</li>
-<li>不能使用arguments.callee</li>
-<li>不能使用arguments.caller</li>
-<li>禁止this指向全局对象， 不应该在顶层代码使用this</li>
-<li>不能使用fn.caller fn.arguments获取函数调用的堆栈</li>
-<li>增加了保留字</li>
-</ul>
-</li>
-<li>export和import<ul>
-<li>export用于规定模块的对外接口</li>
-<li>import用于输入其他模块提供的功能，输入的接口为只读</li>
-</ul>
-</li>
-<li>模块的整体加载<ul>
-<li>用*星号指定一个对象，所有输出值都加载在这个对象上</li>
-</ul>
-</li>
-<li>export default 为模块指定默认输出<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 第一组</span><br><span class="line">export default function crc32() &#123;&#125;</span><br><span class="line">import crc32 from &apos;crc32&apos;;</span><br><span class="line">// 第二组</span><br><span class="line">export function crc32() &#123;&#125;</span><br><span class="line">import &#123; crc32 &#125; from &apos;crc32&apos;;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>区别在于使用export default时 对应的import不需要使用大括号；不适用export default时则需要使用大括号；</p>
-<ul>
-<li>适用场合<ul>
-<li>按需加载：在需要的时候再加载某个模块</li>
-<li>条件加载：将import放在if代码块中，根据不同情况，加载不同模块</li>
-<li>动态的模块路径：允许模块路径动态生成</li>
-</ul>
-</li>
-<li>module的加载规则：<ul>
-<li>使用script标签，但要加入type = ‘module’属性；</li>
-<li></li>
-</ul>
-</li>
-</ul>
-
+<li>es6在module上的设计思想是近亮的静态化，使得编译时就能确定模块的依赖关系，以及输入和输出的变量；
+        
+          <a class="article-more-a" href="/2018/04/08/es6学习笔记5之module/#more">more >></a>
+        
       
 
       

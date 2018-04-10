@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>vue slot 应用场景 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Vue 使用插槽分发内容应用场景1.0 之前看vue的时候并没有过多的使用到vue的插槽分发的部分，也没有过多的了解这部分知识 后来移动端的title那一栏的时候发现了slot的用处 slot使用name这一个特殊的特性来进一步配置如何分发内容，插槽可以有多个不同的名字&amp;lt;slot name = &amp;#39;header&amp;#39;&amp;gt;&amp;lt;/slot&amp;gt;使用方法 一般title栏分为三">
+  <meta name="description" content="Vue 使用插槽分发内容应用场景1.0 之前看vue的时候并没有过多的使用到vue的插槽分发的部分，也没有过多的了解这部分知识 后来移动端的title那一栏的时候发现了slot的用处 slot使用name这一个特殊的特性来进一步配置如何分发内容，插槽可以有多个不同的名字&amp;lt;slot name = &amp;#39;header&amp;#39;&amp;gt;&amp;lt;/slot&amp;gt;">
 <meta name="keywords" content="javascript,vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue slot 应用场景">
 <meta property="og:url" content="http://yoursite.com/2018/04/10/vue-slot-应用场景/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Vue 使用插槽分发内容应用场景1.0 之前看vue的时候并没有过多的使用到vue的插槽分发的部分，也没有过多的了解这部分知识 后来移动端的title那一栏的时候发现了slot的用处 slot使用name这一个特殊的特性来进一步配置如何分发内容，插槽可以有多个不同的名字&amp;lt;slot name = &amp;#39;header&amp;#39;&amp;gt;&amp;lt;/slot&amp;gt;使用方法 一般title栏分为三">
-<meta property="og:updated_time" content="2018-04-10T08:20:06.329Z">
+<meta property="og:description" content="Vue 使用插槽分发内容应用场景1.0 之前看vue的时候并没有过多的使用到vue的插槽分发的部分，也没有过多的了解这部分知识 后来移动端的title那一栏的时候发现了slot的用处 slot使用name这一个特殊的特性来进一步配置如何分发内容，插槽可以有多个不同的名字&amp;lt;slot name = &amp;#39;header&amp;#39;&amp;gt;&amp;lt;/slot&amp;gt;">
+<meta property="og:updated_time" content="2018-04-10T08:20:52.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue slot 应用场景">
-<meta name="twitter:description" content="Vue 使用插槽分发内容应用场景1.0 之前看vue的时候并没有过多的使用到vue的插槽分发的部分，也没有过多的了解这部分知识 后来移动端的title那一栏的时候发现了slot的用处 slot使用name这一个特殊的特性来进一步配置如何分发内容，插槽可以有多个不同的名字&amp;lt;slot name = &amp;#39;header&amp;#39;&amp;gt;&amp;lt;/slot&amp;gt;使用方法 一般title栏分为三">
+<meta name="twitter:description" content="Vue 使用插槽分发内容应用场景1.0 之前看vue的时候并没有过多的使用到vue的插槽分发的部分，也没有过多的了解这部分知识 后来移动端的title那一栏的时候发现了slot的用处 slot使用name这一个特殊的特性来进一步配置如何分发内容，插槽可以有多个不同的名字&amp;lt;slot name = &amp;#39;header&amp;#39;&amp;gt;&amp;lt;/slot&amp;gt;">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -165,7 +165,8 @@
         <h2 id="Vue-使用插槽分发内容"><a href="#Vue-使用插槽分发内容" class="headerlink" title="Vue 使用插槽分发内容"></a>Vue 使用插槽分发内容</h2><h3 id="应用场景1-0"><a href="#应用场景1-0" class="headerlink" title="应用场景1.0"></a>应用场景1.0</h3><ul>
 <li>之前看vue的时候并没有过多的使用到vue的插槽分发的部分，也没有过多的了解这部分知识</li>
 <li>后来移动端的title那一栏的时候发现了slot的用处</li>
-<li>slot使用name这一个特殊的特性来进一步配置如何分发内容，插槽可以有多个不同的名字<code>&lt;slot name = &#39;header&#39;&gt;&lt;/slot&gt;</code><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3></li>
+<li>slot使用name这一个特殊的特性来进一步配置如何分发内容，插槽可以有多个不同的名字<code>&lt;slot name = &#39;header&#39;&gt;&lt;/slot&gt;</code><a id="more"></a>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3></li>
 <li><p>一般title栏分为三部分 左边中间右边</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 子组件 child.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;slot name=&apos;left&apos;&gt;后退&lt;/slot&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;title&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;slot name=&apos;right&apos;&gt;分享&lt;/slot&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">// 父组件</span><br><span class="line">a.场景一</span><br><span class="line">  &lt;child&gt;&lt;/child&gt; // title栏从左到右为 后退 title 分享</span><br><span class="line">b.场景二</span><br><span class="line">  &lt;child&gt;</span><br><span class="line">    &lt;p slot = &apos;left&apos;&gt;back&lt;/p&gt;</span><br><span class="line">  &lt;/child&gt; // title栏从左到右为 back title 分享</span><br><span class="line">c.场景三</span><br><span class="line">  &lt;child&gt;</span><br><span class="line">    &lt;p slot = &apos;left&apos;&gt;&lt;/p&gt;</span><br><span class="line">  &lt;/child&gt; // title栏从左到右为 空值 title 分享</span><br></pre></td></tr></table></figure>
 </li>
