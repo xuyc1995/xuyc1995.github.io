@@ -139,6 +139,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vue之nextTick使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/21/vue之nextTick使用/">vue之nextTick使用</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/21/vue之nextTick使用/" class="archive-article-date">
+  	<time datetime="2018-05-21T03:39:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Vue-nextTick"><a href="#Vue-nextTick" class="headerlink" title="Vue.nextTick()"></a>Vue.nextTick()</h2><h3 id="官方解释"><a href="#官方解释" class="headerlink" title="官方解释"></a>官方解释</h3><ul>
+<li>在下次DOM更新循环结束后执行延迟回调。在修改数据后立即使用这个方法，获取更新后的DOM</li>
+<li>放在Vue.nextTick()回调函数中的执行的应该是会对DOM进行操作的js代码；<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3></li>
+<li>在created()钩子函数进行的DOM操作一定要放在Vue.nextTick()的回调函数中。created钩子函数执行时，DOM其实并没有进行任何渲染；mounted钩子函数执行时，所有的DOM挂载和渲染都已经完成；因为要在created钩子中操作DOM时一定要放在Vue.nextTick()中；</li>
+<li>数据变化后要执行 某个操作，而此操作需要随数据改变而改变DOM结构的时候，应该将操作放在Vue.nextTick()的回调函数中去；<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3></li>
+<li>Vue是异步执行，一旦观察到数据变化，vue会开启一个队列，然后把同一个事件循环中观察到数据变化的watcher推送进这个队列，如果这个watcher被触发多次，只会被推送到队列一次。里用nextTick()这种缓冲行为可以有效的去掉重复的不必要的计算和DOM操作；再下一个事件循环时，Vue会清空队列，并进行必要的DOM更新；</li>
+<li>当设置vm.someData = ‘new value’，DOM不会马上更新，而是在异步队列被清除，也就是下一个事件循环开始时执行更新时才会进行必要的DOM更新；若此时想要根据更新的DOM状态去做某些事，就会出现问题。为了在数据之后等待Vue完成更新DOM，可以在数据变化之后立即使用Vue.nextTick();</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/21/vue之nextTick使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-vue-slot-应用场景" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
